@@ -1,0 +1,25 @@
+{{ define "main" }}
+<article class="post-single">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      {{ with .Params.cve }}<span class="cve-badge">{{ . }}</span>{{ end }}
+      {{ with .Params.tags }}
+      <span class="tag-list">
+        {{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>{{ end }}
+      </span>
+      {{ end }}
+    </div>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.summary }}<p class="post-summary lead">{{ . }}</p>{{ end }}
+  </header>
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+
+  <footer class="post-footer">
+    <a href="{{ "/writeups/" | relURL }}" class="back-link">← Back to writeups</a>
+  </footer>
+</article>
+{{ end }}

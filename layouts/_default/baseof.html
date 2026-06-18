@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} — {{ site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+  {{ $css := resources.Get "css/main.css" | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  <link rel="stylesheet" href="{{ "css/syntax-dark.css" | relURL }}" id="syntax-dark">
+  <link rel="stylesheet" href="{{ "css/syntax-light.css" | relURL }}" id="syntax-light" disabled>
+  {{- block "head" . }}{{ end }}
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      var theme = saved || preferred;
+      document.documentElement.setAttribute('data-theme', theme);
+      if (theme === 'light') {
+        document.getElementById('syntax-dark').disabled = true;
+        document.getElementById('syntax-light').disabled = false;
+      }
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="{{ "/" | relURL }}" class="site-title">{{ site.Title }}</a>
+      <nav class="site-nav">
+        {{ range site.Menus.main }}
+        <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} class="active"{{ end }}>{{ .Name }}</a>
+        {{ end }}
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="icon-sun">&#9788;</span>
+          <span class="icon-moon">&#9790;</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {{- block "main" . }}{{ end }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© {{ site.Params.since }}–{{ now.Format "2006" }} {{ site.Params.author }}</span>
+    </div>
+  </footer>
+
+  <script>
+    var btn = document.getElementById('themeToggle');
+    btn.addEventListener('click', function() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      var syntaxDark = document.getElementById('syntax-dark');
+      var syntaxLight = document.getElementById('syntax-light');
+      if (next === 'light') {
+        syntaxDark.disabled = true;
+        syntaxLight.disabled = false;
+      } else {
+        syntaxLight.disabled = true;
+        syntaxDark.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

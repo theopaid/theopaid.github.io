@@ -1,0 +1,32 @@
+baseURL = "https://tpaidakis.com/"
+locale = "en-us"
+title = "tpaidakis"
+paginate = 10
+enableRobotsTXT = true
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    lineNos = true
+    lineNumbersInTable = false
+    tabWidth = 4
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[params]
+  author = "Theo Paidakis"
+  description = "Offensive security engineer. Penetration tester. CVE researcher."
+  since = "2024"
+
+[taxonomies]
+  tag = "tags"
+
+[menu]
+  [[menu.main]]
+    name = "Writeups"
+    url = "/writeups/"
+    weight = 1
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2

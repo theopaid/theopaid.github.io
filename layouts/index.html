@@ -1,0 +1,29 @@
+{{ define "main" }}
+<section class="home-intro">
+  <p class="tagline">{{ site.Params.description }}</p>
+</section>
+
+<section class="post-list">
+  <h2 class="section-heading">Recent Writeups</h2>
+  {{ $writeups := where site.RegularPages "Section" "writeups" }}
+  {{ range first 5 $writeups }}
+  <article class="post-item">
+    <div class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      {{ with .Params.tags }}
+      <span class="tag-list">
+        {{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>{{ end }}
+      </span>
+      {{ end }}
+    </div>
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    {{ with .Params.summary }}<p class="post-summary">{{ . }}</p>{{ end }}
+  </article>
+  {{ else }}
+  <p class="muted">No writeups yet.</p>
+  {{ end }}
+  {{ if gt (len $writeups) 5 }}
+  <a href="{{ "/writeups/" | relURL }}" class="all-posts-link">All writeups →</a>
+  {{ end }}
+</section>
+{{ end }}
