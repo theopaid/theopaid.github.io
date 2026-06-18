@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="{{ $css.RelPermalink }}">
   <link rel="stylesheet" href="{{ "css/syntax-dark.css" | relURL }}" id="syntax-dark">
   <link rel="stylesheet" href="{{ "css/syntax-light.css" | relURL }}" id="syntax-light" disabled>
+  <link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ "/index.xml" | absURL }}">
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
   {{- block "head" . }}{{ end }}
   <script>
     (function() {
@@ -45,9 +48,28 @@
 
   <footer class="site-footer">
     <div class="container">
-      <span>© {{ site.Params.since }}–{{ now.Format "2006" }} {{ site.Params.author }}</span>
+      <span>© {{ site.Params.since }}–{{ now.Format "2006" }} {{ site.Params.author }} &middot; <span class="colophon">Built with <a href="https://gohugo.io" rel="noopener">Hugo</a></span></span>
+      <a href="{{ "/index.xml" | absURL }}" class="rss-link" aria-label="RSS feed">RSS</a>
     </div>
   </footer>
+
+  <script>
+    document.querySelectorAll('.post-content pre').forEach(function(pre) {
+      var btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'copy';
+      pre.style.position = 'relative';
+      pre.appendChild(btn);
+      btn.addEventListener('click', function() {
+        var code = pre.querySelector('code');
+        var text = code ? code.innerText : pre.innerText;
+        navigator.clipboard.writeText(text).then(function() {
+          btn.textContent = 'copied';
+          setTimeout(function() { btn.textContent = 'copy'; }, 1500);
+        });
+      });
+    });
+  </script>
 
   <script>
     var btn = document.getElementById('themeToggle');

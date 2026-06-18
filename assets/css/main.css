@@ -372,6 +372,206 @@ main.container { flex: 1; padding-top: 3rem; padding-bottom: 4rem; }
 .about-content p { margin-bottom: 1.2rem; }
 .about-content a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
+/* ── table of contents ── */
+.toc {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+}
+
+.toc-title {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.toc nav ul,
+.toc ul { list-style: none; padding-left: 0; margin: 0; }
+
+.toc nav ul ul,
+.toc ul ul { padding-left: 1rem; margin-top: 0.2rem; }
+
+.toc li { margin-bottom: 0.25rem; }
+
+.toc a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.1s;
+}
+
+.toc a:hover { color: var(--accent); }
+
+/* ── copy button ── */
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.1s;
+}
+
+.post-content pre:hover .copy-btn { opacity: 1; }
+.copy-btn:hover { color: var(--text); }
+
+/* ── RSS link in footer ── */
+.site-footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rss-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius);
+  transition: color 0.1s, border-color 0.1s;
+}
+
+.rss-link:hover { color: var(--text); border-color: var(--text-muted); }
+
+/* ── read time ── */
+.read-time {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.775rem;
+}
+
+/* ── PoC block ── */
+.poc-block {
+  border: 1px solid var(--cve);
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.poc-label {
+  display: block;
+  background: var(--cve);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+}
+
+[data-theme="light"] .poc-label { color: #fff; }
+
+.poc-body {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.poc-download {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.poc-download:hover { color: var(--accent-dim); }
+
+.poc-hash {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  padding: 0;
+  word-break: break-all;
+}
+
+.poc-notes {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ── PGP block ── */
+.pgp-block {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.pgp-label {
+  display: block;
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.pgp-body {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pgp-fingerprint {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text);
+  background: none;
+  border: none;
+  padding: 0;
+  letter-spacing: 0.04em;
+  word-break: break-all;
+}
+
+.pgp-links { display: flex; gap: 1rem; }
+
+.pgp-links a {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.pgp-links a:hover { color: var(--accent-dim); }
+
+.pgp-note {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0;
+  font-style: italic;
+}
+
+/* ── colophon ── */
+.colophon { color: var(--text-muted); }
+.colophon a { color: var(--text-muted); text-decoration: none; }
+.colophon a:hover { color: var(--text); }
+
 /* ── misc ── */
 .muted { color: var(--text-muted); font-size: 0.9rem; }
 

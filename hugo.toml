@@ -12,11 +12,15 @@ enableRobotsTXT = true
     tabWidth = 4
   [markup.goldmark.renderer]
     unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
 
 [params]
   author = "Theo Paidakis"
   description = "Offensive security engineer. Penetration tester. CVE researcher."
   since = "2024"
+  twitterSite = ""
 
 [taxonomies]
   tag = "tags"
@@ -30,3 +34,7 @@ enableRobotsTXT = true
     name = "About"
     url = "/about/"
     weight = 2
+  [[menu.main]]
+    name = "Disclosure"
+    url = "/disclosure/"
+    weight = 3

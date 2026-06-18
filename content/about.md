@@ -13,4 +13,13 @@ I've worked across red team engagements, bug bounty programs, and dedicated vuln
 
 ## Contact
 
-PGP and other contact details available on request.
+<div class="pgp-block">
+  <span class="pgp-label">PGP Public Key</span>
+  <div class="pgp-body">
+    <code class="pgp-fingerprint">XXXX XXXX XXXX XXXX XXXX  XXXX XXXX XXXX XXXX XXXX</code>
+    <div class="pgp-links">
+      <a href="https://keys.openpgp.org" rel="noopener">keys.openpgp.org</a>
+    </div>
+    <p class="pgp-note">Prefer encrypted communication for vulnerability reports and sensitive topics.</p>
+  </div>
+</div>

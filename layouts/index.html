@@ -3,13 +3,38 @@
   <p class="tagline">{{ site.Params.description }}</p>
 </section>
 
+{{ $writeups := where site.RegularPages "Section" "writeups" }}
+{{ $featured := where $writeups "Params.featured" true }}
+{{ if $featured }}
+<section class="post-list">
+  <h2 class="section-heading">Featured</h2>
+  {{ range $featured }}
+  <article class="post-item">
+    <div class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      <span class="read-time">{{ .ReadingTime }} min read</span>
+      {{ with .Params.cve }}<span class="cve-badge">{{ . }}</span>{{ end }}
+      {{ with .Params.tags }}
+      <span class="tag-list">
+        {{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>{{ end }}
+      </span>
+      {{ end }}
+    </div>
+    <h3><a href="{{ .RelPermalink }}">&#9733; {{ .Title }}</a></h3>
+    {{ with .Params.summary }}<p class="post-summary">{{ . }}</p>{{ end }}
+  </article>
+  {{ end }}
+</section>
+{{ end }}
+
 <section class="post-list">
   <h2 class="section-heading">Recent Writeups</h2>
-  {{ $writeups := where site.RegularPages "Section" "writeups" }}
   {{ range first 5 $writeups }}
   <article class="post-item">
     <div class="post-meta">
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      <span class="read-time">{{ .ReadingTime }} min read</span>
+      {{ with .Params.cve }}<span class="cve-badge">{{ . }}</span>{{ end }}
       {{ with .Params.tags }}
       <span class="tag-list">
         {{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>{{ end }}

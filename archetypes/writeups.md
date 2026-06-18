@@ -2,9 +2,13 @@
 title: "{{ replace .File.ContentBaseName "-" " " | title }}"
 date: {{ .Date }}
 draft: true
+featured: false
 summary: ""
 cve: ""
 tags: []
+poc_url: ""
+poc_sha256: ""
+poc_notes: ""
 ---
 
 ## Summary
