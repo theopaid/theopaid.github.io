@@ -29,14 +29,14 @@
 <body>
   <header class="site-header">
     <div class="container">
-      <a href="{{ "/" | relURL }}" class="site-title">{{ site.Title }}</a>
+      <a href="{{ "/" | relURL }}" class="site-title">{{ site.Title }}<span class="cursor">▌</span></a>
       <nav class="site-nav">
         {{ range site.Menus.main }}
         <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} class="active"{{ end }}>{{ .Name }}</a>
         {{ end }}
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-          <span class="icon-sun">&#9788;</span>
-          <span class="icon-moon">&#9790;</span>
+          <span class="icon-sun">light</span>
+          <span class="icon-moon">dark</span>
         </button>
       </nav>
     </div>
