@@ -3,13 +3,11 @@ title: "About"
 layout: "single"
 ---
 
-Offensive security engineer with a focus on penetration testing and vulnerability research. I spend most of my time breaking things — web apps, APIs, network infrastructure — and documenting what I find.
+I'm a penetration tester currently working in the payments technology sector, which means a fair amount of my time is spent in PCI DSS scope - card data environments, payment gateways, acquirer infrastructure. Before moving into offensive security I spent several years as a software engineer, knowing how things are built turns out to be a reasonable way to learn how to break them. I did not plan it that way but it worked out.
 
-This site is where I publish writeups for vulnerabilities I discover, CVEs I get assigned, and other security topics worth putting down in writing. Everything here reflects my own research and opinions.
+I hold a BSc in Software Engineering and an MSc in Cybersecurity. Security was never far away though - growing up I was running scripts I barely understood and poking at things I probably should not have been poking at. The interest was always there, it just took a while to become a job.
 
-## Background
-
-I've worked across red team engagements, bug bounty programs, and dedicated vulnerability research. My primary interest is in finding logic flaws and design-level weaknesses rather than purely technical exploitation — the kind of bugs that slip through even when the code looks right at a glance.
+Outside of work I do CTFs, write code, and spend time on vulnerability research. This site is where I document things worth writing down - CVEs I get assigned, techniques I find interesting, and occasionally other topics that don't fit neatly into either category. Everything here is my own work and reflects my own views.
 
 ## Certifications
 
