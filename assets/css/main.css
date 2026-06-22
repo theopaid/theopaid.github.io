@@ -444,25 +444,34 @@ main.container { flex: 1; padding-top: 3rem; padding-bottom: 4rem; }
 .post-content pre:hover .copy-btn { opacity: 1; }
 .copy-btn:hover { color: var(--text); }
 
-/* ── RSS link in footer ── */
+/* ── footer socials ── */
 .site-footer .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.rss-link {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  border: 1px solid var(--border);
-  padding: 0.1rem 0.4rem;
-  border-radius: var(--radius);
-  transition: color 0.1s, border-color 0.1s;
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.rss-link:hover { color: var(--text); border-color: var(--text-muted); }
+.footer-social-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: color 0.1s;
+}
+
+.footer-social-link:hover { color: var(--text); }
+
+.rss-link {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
 
 /* ── read time ── */
 .read-time {
