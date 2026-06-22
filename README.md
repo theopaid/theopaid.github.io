@@ -233,7 +233,7 @@ To unpublish a post, set `draft: true` and push again.
 
 ### About Page
 
-Edit `content/about.md` directly. Plain markdown. The page uses the `about/single.html` layout which renders the same as any other page.
+Edit `content/about.md` directly. The bio text is plain markdown at the top of the file. Below it are the Certifications section (raw HTML blocks for the badge grid) and the Contact section (PGP block). Edit only the prose — leave the HTML blocks intact unless you are adding or removing a cert.
 
 ### PGP Key
 
