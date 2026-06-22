@@ -18,7 +18,7 @@ enableRobotsTXT = true
 
 [params]
   author = "Theo Paidakis"
-  description = "Offensive security engineer. Penetration tester. CVE researcher."
+  description = "grep -r \"password\" . enthusiast."
   since = "2024"
   twitterSite = ""
 
