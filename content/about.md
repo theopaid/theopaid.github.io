@@ -29,6 +29,19 @@ Outside of work I do CTFs, write code, and spend time on vulnerability research.
   </a>
 </div>
 
+## Reach me at
+
+<div class="socials">
+  <a href="https://www.linkedin.com/in/theodosis-paidakis/" class="social-link" target="_blank" rel="noopener">
+    <span class="social-label">LinkedIn</span>
+    <span class="social-handle">theodosis-paidakis</span>
+  </a>
+  <a href="mailto:theodosis.paid@gmail.com" class="social-link">
+    <span class="social-label">Email</span>
+    <span class="social-handle">theodosis.paid@gmail.com</span>
+  </a>
+</div>
+
 ## Contact
 
 <div class="pgp-block">

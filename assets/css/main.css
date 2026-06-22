@@ -612,6 +612,38 @@ main.container { flex: 1; padding-top: 3rem; padding-bottom: 4rem; }
   color: var(--text-muted);
 }
 
+/* ── socials ── */
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+.social-label {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  min-width: 4.5rem;
+}
+
+.social-handle {
+  color: var(--accent);
+  transition: color 0.1s;
+}
+
+.social-link:hover .social-handle { color: var(--accent-dim); }
+
 /* ── colophon ── */
 .colophon { color: var(--text-muted); }
 .colophon a { color: var(--text-muted); text-decoration: none; }
