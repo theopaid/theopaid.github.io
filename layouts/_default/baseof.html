@@ -67,6 +67,18 @@
     </div>
   </footer>
 
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script>
+    var topBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+      topBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    topBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
   <script>
     document.querySelectorAll('.post-content pre').forEach(function(pre) {
       var btn = document.createElement('button');

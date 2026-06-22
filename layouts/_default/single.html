@@ -16,10 +16,10 @@
   </header>
 
   {{ if .TableOfContents }}
-  <nav class="toc" aria-label="Table of contents">
-    <span class="toc-title">Contents</span>
+  <details class="toc" open>
+    <summary class="toc-title">Contents</summary>
     {{ .TableOfContents }}
-  </nav>
+  </details>
   {{ end }}
 
   {{ with .Params.poc_url }}

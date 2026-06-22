@@ -399,17 +399,33 @@ main.container { flex: 1; padding-top: 3rem; padding-bottom: 4rem; }
 }
 
 .toc-title {
-  display: block;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-muted);
   margin-bottom: 0.6rem;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+}
+
+/* on desktop: prevent collapsing, hide the marker */
+@media (min-width: 641px) {
+  .toc { pointer-events: none; }
+  .toc-title { pointer-events: none; cursor: default; }
+  .toc summary::-webkit-details-marker,
+  .toc summary::marker { display: none; }
+}
+
+/* on mobile: show the marker and allow toggling */
+@media (max-width: 640px) {
+  .toc-title::after { content: " ▾"; font-size: 0.65rem; }
+  .toc[open] .toc-title::after { content: " ▴"; }
 }
 
 .toc nav ul,
-.toc ul { list-style: none; padding-left: 0; margin: 0; }
+.toc ul { list-style: none; padding-left: 0; margin: 0.6rem 0 0; }
 
 .toc nav ul ul,
 .toc ul ul { padding-left: 1rem; margin-top: 0.2rem; }
@@ -423,6 +439,32 @@ main.container { flex: 1; padding-top: 3rem; padding-bottom: 4rem; }
 }
 
 .toc a:hover { color: var(--accent); }
+
+/* ── back to top ── */
+.back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, color 0.1s, border-color 0.1s;
+  z-index: 200;
+}
+
+.back-to-top.visible { opacity: 1; pointer-events: auto; }
+.back-to-top:hover { color: var(--text); border-color: var(--text-muted); }
 
 /* ── copy button ── */
 .copy-btn {
@@ -671,6 +713,8 @@ main.container { flex: 1; padding-top: 3rem; padding-bottom: 4rem; }
 
 .social-link--signal { align-items: flex-start; }
 
+.signal-tap { display: none; }
+
 .signal-qr {
   width: 120px;
   height: 120px;
@@ -765,6 +809,19 @@ main.container { flex: 1; padding-top: 3rem; padding-bottom: 4rem; }
   /* poc/pgp fingerprint wrap */
   .pgp-fingerprint { font-size: 0.75rem; }
   .poc-hash { font-size: 0.7rem; }
+
+  /* cert badges: shrink so three fit in a row */
+  .cert-badge { width: 76px; height: 76px; }
+  .cert-list { gap: 1.1rem; }
+
+  /* signal: hide QR, show tap link instead */
+  .signal-qr { display: none; }
+  .signal-tap {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--accent);
+  }
 
   /* footer */
   .site-footer .container { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
