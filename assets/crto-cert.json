@@ -1,0 +1,54 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+  ],
+  "type": [
+    "VerifiableCredential",
+    "OpenBadgeCredential"
+  ],
+  "id": "https://eu.credential.net/2969ba69-b5a0-4ac8-9546-3eb87df3fa4e",
+  "name": "Red Team Operator",
+  "description": "Holders of the CRTO have the knowledge and skills necessary to perform adversary simulation and emulation exercises with Cobalt Strike.  They can carry out every stage of an engagement from initial access to acting on the objective and reporting.",
+  "image": {
+    "id": "https://eu.pdf.ms.credential.net/v2/certificate/image?env=eu-production&credential=8w0k8ufk&variant=medium",
+    "type": "Image"
+  },
+  "issuer": {
+    "type": "Profile",
+    "id": "did:web:eu.api.accredible.com:v1:verifiable_credential:organizations:10007474",
+    "name": "Zero-Point Security",
+    "url": "https://www.zeropointsecurity.co.uk"
+  },
+  "validFrom": "2026-06-11T00:00:00Z",
+  "credentialSubject": {
+    "type": "AchievementSubject",
+    "identifier": [
+      {
+        "type": "IdentityObject",
+        "hashed": true,
+        "identityHash": "sha256$77d22febab6aa7da4ee55f972ca1182b1afd3910fccbe6c65d7332e76fa4d7f8",
+        "identityType": "emailAddress",
+        "salt": "5192ec06594343284af5d8c9cbfa332c"
+      }
+    ],
+    "achievement": {
+      "id": "https://eu.credential.net/group/66772",
+      "type": "Achievement",
+      "achievementType": "Achievement",
+      "name": "Red Team Operator",
+      "description": "Holders of the CRTO have the knowledge and skills necessary to perform adversary simulation and emulation exercises with Cobalt Strike.  They can carry out every stage of an engagement from initial access to acting on the objective and reporting.",
+      "criteria": {
+        "narrative": "https://www.zeropointsecurity.co.uk/course/red-team-ops"
+      }
+    }
+  },
+  "proof": {
+    "type": "DataIntegrityProof",
+    "cryptosuite": "eddsa-rdfc-2022",
+    "created": "2026-06-22T20:15:20Z",
+    "verificationMethod": "did:web:eu.api.accredible.com:v1:verifiable_credential:organizations:10007474#6b0b5b90-dc1a-11f0-b2a5-a383f06f0bb6",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "z2jjMiU3UsDTW56hi46Z7JWe3Z6j1EFkcRW1QKwKk5HCy6cwU5exw6hn4cwunktNMJiFp4vweC7ejM93vH78asQvA"
+  }
+}

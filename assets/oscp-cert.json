@@ -1,0 +1,55 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+  ],
+  "type": [
+    "VerifiableCredential",
+    "OpenBadgeCredential"
+  ],
+  "id": "https://www.credential.net/f0de21b7-fbc3-4691-bcfd-0d1654f97a00",
+  "name": "OffSec Certified Professional+ (OSCP+)",
+  "description": "An OSCP+ has demonstrated the ability to use persistence, creativity, and perceptiveness to identify vulnerabilities and execute organized attacks under tight time constraints. They can:* Use information gathering techniques to identify and enumerate targets running various operating systems and services* Write scripts and tools to aid in the penetration testing process* Analyze, correct, modify, cross-compile, and port public exploit code* Conduct remote, local privilege escalation, and client-side attacks* Identify and exploit XSS, SQL injection, and file inclusion vulnerabilities in web applications* Leverage tunneling techniques to pivot between networksOSCP holders have also shown they can think outside the box while managing both time and resources.",
+  "image": {
+    "id": "https://pdf.ms.credential.net/v2/certificate/image?env=production&credential=xwx1w89k&variant=medium",
+    "type": "Image"
+  },
+  "issuer": {
+    "type": "Profile",
+    "id": "did:web:api.accredible.com:v1:verifiable_credential:organizations:81055",
+    "name": "OffSec",
+    "url": "https://www.offsec.com/"
+  },
+  "validFrom": "2026-05-08T00:00:00Z",
+  "validUntil": "2029-05-07T00:00:00Z",
+  "credentialSubject": {
+    "type": "AchievementSubject",
+    "identifier": [
+      {
+        "type": "IdentityObject",
+        "hashed": true,
+        "identityHash": "sha256$8c60220d266bd5a487ec2cfbeeed1608727be24b68d8d858ca70afeb7f51a5a2",
+        "identityType": "emailAddress",
+        "salt": "9ccbb4d2d369b93b1db10a0ccd2e7e17"
+      }
+    ],
+    "achievement": {
+      "id": "https://www.credential.net/group/637718",
+      "type": "Achievement",
+      "achievementType": "Achievement",
+      "name": "OffSec Certified Professional+ (OSCP+)",
+      "description": "An OSCP+ has demonstrated the ability to use persistence, creativity, and perceptiveness to identify vulnerabilities and execute organized attacks under tight time constraints. They can:* Use information gathering techniques to identify and enumerate targets running various operating systems and services* Write scripts and tools to aid in the penetration testing process* Analyze, correct, modify, cross-compile, and port public exploit code* Conduct remote, local privilege escalation, and client-side attacks* Identify and exploit XSS, SQL injection, and file inclusion vulnerabilities in web applications* Leverage tunneling techniques to pivot between networksOSCP holders have also shown they can think outside the box while managing both time and resources.",
+      "criteria": {
+        "narrative": "https://www.offsec.com/courses/pen-200/"
+      }
+    }
+  },
+  "proof": {
+    "type": "DataIntegrityProof",
+    "cryptosuite": "eddsa-rdfc-2022",
+    "created": "2026-06-22T20:15:12Z",
+    "verificationMethod": "did:web:api.accredible.com:v1:verifiable_credential:organizations:81055#46854bb4-dc15-11f0-83da-b308646869a3",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "z2SLby2jAqqPXDemD5X3KvwLCqoY6xSDaqQPKxjqHJBMnYXtuP9ZSjGQjm6iBUYMT2PfQDiEQ7HZLfP7PEPUrNXjN"
+  }
+}
