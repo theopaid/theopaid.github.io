@@ -52,6 +52,6 @@ Outside of work I do CTFs, write code, and spend time on vulnerability research.
       <a href="/pubkey.asc" rel="noopener">Download public key</a>
       <a href="https://keys.openpgp.org/search?q=theodosis.paid@gmail.com" rel="noopener">keys.openpgp.org</a>
     </div>
-    <p class="pgp-note">Prefer encrypted communication for vulnerability reports and sensitive topics.</p>
+    <p class="pgp-note">Prefer encrypted communication for sensitive topics.</p>
   </div>
 </div>
