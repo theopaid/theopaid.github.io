@@ -47,9 +47,10 @@ Outside of work I do CTFs, write code, and spend time on vulnerability research.
 <div class="pgp-block">
   <span class="pgp-label">PGP Public Key</span>
   <div class="pgp-body">
-    <code class="pgp-fingerprint">XXXX XXXX XXXX XXXX XXXX  XXXX XXXX XXXX XXXX XXXX</code>
+    <code class="pgp-fingerprint">6C75 A8BF 3D11 1ED2 4DA6  FC23 A072 CF7C 7F36 C803</code>
     <div class="pgp-links">
-      <a href="https://keys.openpgp.org" rel="noopener">keys.openpgp.org</a>
+      <a href="/pubkey.asc" rel="noopener">Download public key</a>
+      <a href="https://keys.openpgp.org/search?q=theodosis.paid@gmail.com" rel="noopener">keys.openpgp.org</a>
     </div>
     <p class="pgp-note">Prefer encrypted communication for vulnerability reports and sensitive topics.</p>
   </div>
