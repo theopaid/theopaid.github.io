@@ -644,6 +644,16 @@ main.container { flex: 1; padding-top: 3rem; padding-bottom: 4rem; }
 
 .social-link:hover .social-handle { color: var(--accent-dim); }
 
+.social-link--signal { align-items: flex-start; }
+
+.signal-qr {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  display: block;
+}
+
 /* ── colophon ── */
 .colophon { color: var(--text-muted); }
 .colophon a { color: var(--text-muted); text-decoration: none; }

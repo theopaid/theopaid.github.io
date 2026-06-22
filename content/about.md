@@ -40,6 +40,10 @@ Outside of work I do CTFs, write code, and spend time on vulnerability research.
     <span class="social-label">Email</span>
     <span class="social-handle">theodosis.paid@gmail.com</span>
   </a>
+  <a href="https://signal.me/#eu/0MhWW_ZN5DpXRUJxAAter5rnFPcg2E_4EfbUQG_LjX9-WeD4oNpC54XlSBz-gKZF" class="social-link social-link--signal" target="_blank" rel="noopener">
+    <span class="social-label">Signal</span>
+    <img src="/signal-username-qr-code.png" alt="Signal QR code" class="signal-qr">
+  </a>
 </div>
 
 ## Contact
