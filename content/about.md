@@ -25,12 +25,9 @@ I've worked across red team engagements, bug bounty programs, and dedicated vuln
     <span class="cert-issuer">OffSec</span>
   </a>
   <a href="/ISO27001LA-cert.pdf" class="cert-item" target="_blank" rel="noopener" title="View ISO 27001 Lead Auditor certificate">
-    <div class="cert-badge cert-badge--pdf">
-      <span class="cert-badge-label">ISO</span>
-      <span class="cert-badge-sub">27001</span>
-    </div>
-    <span class="cert-name">ISO 27001</span>
-    <span class="cert-issuer">Lead Auditor</span>
+    <img src="/iso27001-badge.jpg" alt="ISO/IEC 27001 Lead Auditor" class="cert-badge">
+    <span class="cert-name">ISO 27001 Lead Auditor</span>
+    <span class="cert-issuer">TÜV Austria</span>
   </a>
 </div>
 
