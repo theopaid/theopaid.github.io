@@ -51,7 +51,7 @@ The expression gets stored in `field.options[:command]` and then rendered in `_s
 
 `instance_eval`. On a value read from the database. In a Rails ERB view, which means the binding has access to helpers, request context, and everything the view layer can touch. Every time someone opens a post edit page that uses this field group, that expression runs.
 
-[insert gif here — you can smell something is off]
+![](/images/hmm-cat.gif)
 
 ---
 
@@ -90,7 +90,7 @@ There is no explicit list of which keys are safe to grant `manage` to and which 
 
 ## Putting It Together
 
-[insert meme gif — here comes the good part]
+![](/images/come-sit-here.gif)
 
 The full chain is three HTTP requests:
 
@@ -142,9 +142,9 @@ AND value LIKE '%select_eval%';
 
 | Date | Event |
 |---|---|
-| 2026-06-19 | Vulnerability discovered during source analysis |
-| 2026-06-21 | Vendor notified, disclosure prepared |
 | 2026-03-29 | Patch released (v2.9.2) |
+| 2026-06-19 | Vulnerability discovered during source analysis of v2.9.1 |
+| 2026-06-21 | Vendor notified, disclosure prepared |
 | TBD | CVE assigned |
 | TBD | Public disclosure |
 

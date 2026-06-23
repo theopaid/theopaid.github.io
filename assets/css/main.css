@@ -308,6 +308,8 @@ main.container { flex: 1; padding-top: 3rem; padding-bottom: 4rem; }
 
 .post-content p { margin-bottom: 1.2rem; }
 
+.post-content img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+
 .post-content a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .post-content a:hover { color: var(--accent-dim); }
 
