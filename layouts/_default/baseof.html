@@ -70,6 +70,23 @@
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script>
+    (function() {
+      if (window.innerWidth > 640) return;
+      var header = document.querySelector('.site-header');
+      var lastY = 0;
+      window.addEventListener('scroll', function() {
+        var y = window.scrollY;
+        if (y > lastY && y > 80) {
+          header.classList.add('header-hidden');
+        } else {
+          header.classList.remove('header-hidden');
+        }
+        lastY = y;
+      }, { passive: true });
+    })();
+  </script>
+
+  <script>
     var topBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', function() {
       topBtn.classList.toggle('visible', window.scrollY > 400);
