@@ -51,7 +51,7 @@ The expression gets stored in `field.options[:command]` and then rendered in `_s
 
 `instance_eval`. On a value read from the database. In a Rails ERB view, which means the binding has access to helpers, request context, and everything the view layer can touch. Every time someone opens a post edit page that uses this field group, that expression runs.
 
-<img src="/images/hmm-cat.gif" alt="" style="max-width: 360px; width: 100%;" class="centered-img">
+<img src="/images/hmm-cat.gif" alt="" style="max-width: 260px; width: 100%;" class="centered-img">
 
 ---
 
