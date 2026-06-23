@@ -3,6 +3,7 @@ title: "RCE via a Dropdown: How instance_eval in Camaleon CMS Turned a Select Fi
 date: 2026-06-21
 draft: true
 featured: false
+notoc: true
 summary: "A select field with Ruby eval support and no sanitization becomes a remote code execution vector in Camaleon CMS, exploitable by any editor-level account."
 cve: ""
 tags: [ruby-on-rails, rce, cms, eval, camaleon-cms]
@@ -107,9 +108,7 @@ For the payload I used a `Thread.new` wrapper so the page render does not hang w
 
 Two things tripped me up during testing. First, the `assign_group` parameter when creating the field group must be `PostType_Post,<type_id>` — not just `PostType,<type_id>`. The difference matters because `get_field_groups` on the Post model queries for `object_class = 'PostType_Post'` specifically, so a field group created with the wrong class never gets rendered and the payload never fires. Second, the strings inside the payload need to use double quotes. Ruby single-quoted strings do not interpolate `#{}`, so any backtick commands wrapped in single quotes execute as literal text and do nothing.
 
-[IMAGE: Terminal showing the Python PoC script running, with "Field group: id=X (HTTP 200)" and "Edit page: HTTP 200" output]
-
-[IMAGE: Netcat listener receiving the reverse shell connection, showing uid/id output confirming code execution as the web server user]
+![PoC script output showing field group creation and edit page trigger](/images/camaleon-rce-evidence-1.png)
 
 ---
 

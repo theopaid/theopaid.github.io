@@ -15,7 +15,7 @@
     {{ with .Params.summary }}<p class="post-summary lead">{{ . }}</p>{{ end }}
   </header>
 
-  {{ if .TableOfContents }}
+  {{ if and .TableOfContents (not .Params.notoc) }}
   <details class="toc" open>
     <summary class="toc-title">Contents</summary>
     {{ .TableOfContents }}
@@ -26,7 +26,7 @@
   <div class="poc-block">
     <span class="poc-label">Proof of Concept</span>
     <div class="poc-body">
-      <a href="{{ . }}" class="poc-download" rel="nofollow noopener">Download PoC</a>
+      <a href="{{ . }}" class="poc-download" rel="nofollow noopener" target="_blank">Download PoC</a>
       {{ with $.Params.poc_sha256 }}<code class="poc-hash">SHA-256: {{ . }}</code>{{ end }}
       {{ with $.Params.poc_notes }}<p class="poc-notes">{{ . }}</p>{{ end }}
     </div>
