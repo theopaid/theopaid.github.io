@@ -3,11 +3,11 @@ title: "About"
 layout: "single"
 ---
 
-I'm a penetration tester in the payments sector - most of my time is in PCI DSS scope: card data environments, payment gateways, acquirer infrastructure. Before offensive security I spent several years as a software engineer; knowing how things are built turns out to be a reasonable way to learn how to break them.
+I'm a penetration tester in the payments sector - most of my time is in PCI DSS scope. Before offensive security I spent several years as a software engineer.
 
 I hold a BSc in Software Engineering and an MSc in Cybersecurity. Growing up I was running scripts I barely understood and poking at things I probably should not have been. The interest was always there, it just took a while to become a job.
 
-Outside of work I do CTFs, write code, and spend time on vulnerability research. This site is where I document CVEs, techniques, and occasionally other topics. Everything here is my own work and reflects my own views.
+Outside of work I do CTFs, and spend time on vulnerability research. This site is where I document CVEs, techniques, and occasionally other topics. Everything here is my own work and reflects my own views.
 
 ## Certifications
 
