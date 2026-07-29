@@ -18,13 +18,11 @@ poc_notes: "Authenticated RCE. Requires an account with custom_fields permission
 
 ## Background
 
-Camaleon CMS is a Ruby on Rails content management system. It ships a custom field engine that lets admins attach extra fields to posts, pages, and users: text fields, dropdowns, file uploads, and several specialized types.
-
-One of those types is `select_eval`.
+Camaleon CMS is a Ruby on Rails content management system. It ships a custom field engine that lets admins attach extra fields to posts, pages, and users: text fields, dropdowns, file uploads, and several specialized types. One of those is `select_eval`.
 
 ---
 
-## The `select_eval` Field Type
+## The `select_eval` field type
 
 `select_eval` builds a select dropdown whose options come from a Ruby expression the field author supplies. The definition lives in `custom_fields_helper.rb`:
 
@@ -38,9 +36,7 @@ items[:select_eval] = {
 }
 ```
 
-The extra field is labeled "Command to Eval".
-
-Camaleon stores the expression in `field.options[:command]` and renders it in `_select_eval.html.erb`:
+The extra field is labeled "Command to Eval". Camaleon stores that expression in `field.options[:command]` and renders it in `_select_eval.html.erb`:
 
 ```erb
 <%# app/views/camaleon_cms/admin/settings/custom_fields/fields/_select_eval.html.erb, line 2 %>
@@ -55,7 +51,7 @@ Camaleon stores the expression in `field.options[:command]` and renders it in `_
 
 ---
 
-## What Makes This Exploitable
+## What makes this exploitable
 
 Executing Ruby from the database only matters if an attacker can write to that field.
 
@@ -74,7 +70,7 @@ end
 
 `permit!` passes every parameter under `field_options` straight through to the model, including `command`. There is no whitelist and no filtering. A POST of `field_options[x][command]=<ruby>` writes the expression to the database.
 
-Access to that endpoint is governed by `ability.rb`, which grants `can :manage` to any key present in the role's `@roles_manager` hash, including `custom_fields`:
+`ability.rb` governs who reaches that endpoint. It grants `can :manage` to any key present in the role's `@roles_manager` hash, including `custom_fields`:
 
 ```ruby
 # app/models/camaleon_cms/ability.rb, lines 161-165
@@ -91,7 +87,7 @@ On most Camaleon installations, editor-level accounts have `custom_fields` set. 
 
 ---
 
-## Exploit Chain
+## Exploit chain
 
 ![](/images/come-sit-here.gif)
 
@@ -99,7 +95,7 @@ The full chain is three steps:
 
 1. Log in as any user with `custom_fields` permission
 2. POST to `/admin/settings/custom_fields` to create a field group with a `select_eval` field where `command` is your payload
-3. GET any post edit page that uses the field group — `instance_eval` fires immediately
+3. GET any post edit page that uses the field group, and `instance_eval` fires immediately
 
 The payload wraps the shell in `Thread.new` so the page render does not hang waiting for it to return:
 
@@ -120,13 +116,13 @@ Two implementation details matter. First, the `assign_group` parameter when crea
 Any account with `custom_fields` permission on an affected version gets:
 
 - Arbitrary Ruby execution in the Rails process, with the privileges of the web server user
-- Persistent execution. The payload fires on every render of every post using the field group, not once
-- Session forgery. Reading `Rails.application.secret_key_base` allows forging session cookies for any user, including admins
+- Execution that repeats, since the payload fires on every render of every post using the field group rather than once
+- Forged session cookies for any user including admins, by reading `Rails.application.secret_key_base` and signing them
 - Access to every site's data on a shared multi-site Camaleon instance
 
 ---
 
-## A Note on Prior Research
+## A note on prior research
 
 GitHub Security Lab published a batch of five advisories against Camaleon CMS in late 2024 (GHSL-2024-182 through GHSL-2024-186). One of them, GHSL-2024-185 (GHSA-7x4w-cj9r-h4v9), covers a field type called `label_eval` which has the same root cause: arbitrary Ruby executed via `instance_eval` in a view. Two of the five advisories received CVE numbers, CVE-2024-46986 and CVE-2024-46987. GHSL-2024-185 was not one of them.
 
@@ -141,7 +137,7 @@ This report is specifically about `select_eval`.
 
 ---
 
-## Affected Versions
+## Affected versions
 
 The vulnerability was introduced in commit `415cbda6` on 2015-10-16, when `select_eval` was first added. It affected every release from 2.1.1 through 2.9.1.
 
@@ -155,7 +151,7 @@ Separately, `custom_field_group.rb` gained a dedicated `select_eval` permission.
 
 If you are running any version older than v2.9.2, update now.
 
-If you are already on v2.9.2, it is worth auditing your database. Any `select_eval` field that exists in the database still executes its stored expression on every render. Run this query and review what comes back:
+If you are already on v2.9.2, audit your database anyway. Any `select_eval` field that survived the upgrade still executes its stored expression on every render. Run this query and review what comes back:
 
 ```sql
 -- MySQL (key is a reserved word, so it needs backticks)
@@ -179,7 +175,7 @@ SELECT * FROM metas WHERE "key" = '_default' AND value LIKE '%select_eval%';
 
 ---
 
-## Final Thoughts
+## Takeaway
 
 `eval` in any form deserves a second look, especially when the input comes from the database rather than directly from a request. Database values feel safe because they passed through the application at some earlier point, but if the write path had no sanitization, the stored value is just as attacker-controlled as anything in a POST body.
 
