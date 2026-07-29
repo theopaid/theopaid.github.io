@@ -2,3 +2,35 @@ public/
 resources/
 .hugo_build.lock
 .claude/
+
+# OS cruft
+.DS_Store
+
+# Credentials and private key material. Never commit these.
+*.pem
+*.key
+*.p12
+*.pfx
+*.ppk
+*.jks
+*.keystore
+*.gpg
+secring.*
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+.env
+.env.*
+secrets.yml
+credentials.json
+.netrc
+.npmrc
+
+# The PGP *public* key is published on purpose and is linked from /about.
+# Keep it tracked. Do not add *.asc or *key* above, both would swallow it.
+!static/pubkey.asc
+
+# Timestamped screenshots dropped into static/ are scratch captures from other
+# research. Anything in static/ is published verbatim, so keep them out.
+/static/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]_*.png
