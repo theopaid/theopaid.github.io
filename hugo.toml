@@ -1,5 +1,6 @@
 baseURL = "https://tpaidakis.com/"
 locale = "en-us"
+timeZone = "Europe/Athens"
 title = "tpaidakis"
 paginate = 10
 enableRobotsTXT = true
