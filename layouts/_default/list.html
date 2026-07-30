@@ -9,7 +9,7 @@
     <div class="post-meta">
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
       <span class="read-time">{{ .ReadingTime }} min read</span>
-      {{ with .Params.cve }}<span class="cve-badge">{{ . }}</span>{{ end }}
+      {{ with .Params.cve }}{{ range (cond (reflect.IsSlice .) . (slice .)) }}<span class="cve-badge">{{ . }}</span>{{ end }}{{ end }}
       {{ with .Params.tags }}
       <span class="tag-list">
         {{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>{{ end }}
