@@ -79,6 +79,8 @@ name[name_len - 1]  ->  name[(uint32_t)0 - 1]  ->  name[0xFFFFFFFF]
 
 The subtraction happens in unsigned 32-bit arithmetic and wraps. The parser reads 4,294,967,295 bytes past `name`.
 
+<img src="/images/boom-mind-blown.gif" width="300" alt="Mind blown reaction" style="display:block; margin-bottom:1.5em">
+
 The `(size_t)` casts on lines 235 and 239 look like someone thought about types, but they are applied to the right hand side of an assignment into a `uint32_t`, so the value truncates straight back down and line 241 is still 32-bit.
 
 Trigger, which is a normal multipart POST with `name=;` instead of `name="x";`:
@@ -283,6 +285,8 @@ The condition means "there are fewer than `4 + boundary_len` bytes left," which 
 
 The trap is that it converges. The first call rewinds `pos` a few bytes and reports that much partial data. On the next call `start` is already at the rewound position, so `end - start` is 0: nothing is reported, `pos` is set to where it started, and the function returns 0 consumed with neither flag set. From the parser's point of view nothing has gone wrong; it is waiting for more data. But the body is already fully buffered, so "wait for more" becomes "wait forever."
 
+<img src="/images/skeleton-waiting.gif" width="300" alt="Skeleton waiting on a bench" style="display:block; margin-bottom:1.5em">
+
 Trigger: end the body with a closing boundary that never finishes. A real one is `--B--\r\n`; send `--B-`, dropping the last three bytes, with `Content-Length` set to exactly that truncated length.
 
 ```
@@ -319,6 +323,8 @@ There is no ASAN report, because nothing is out of bounds. The parser does valid
 Idle at 0.0%, then pinned indefinitely. It never returned; `kill -9` was required.
 
 This is the worst of the three despite being the least dramatic. The other two kill a worker and a multi-worker deployment respawns it, so the impact is kind of mitigated automatically in some deployments. Here the worker stays alive and useless. Nothing crashes, so nothing restarts. Send as many requests as the server has workers and it is down until someone restarts it by hand, while every health check still sees a live process listening on the port.
+
+<img src="/images/this-is-fine.gif" width="300" alt="Cartoon dog sitting in a burning room saying this is fine" style="display:block; margin-bottom:1.5em">
 
 The fix is a progress guard in the caller:
 
